@@ -18,9 +18,9 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun WG_Create_Screen() {
-    val navController = rememberNavController()
+    //val navController = rememberNavController()
 
-        Text(text = "Textzeilen mit WG-Name, Mitglieder, etc", Modifier.fillMaxHeight())
+    //    Text(text = "Textzeilen mit WG-Name, Mitglieder, etc", Modifier.fillMaxHeight())
 
 
 
