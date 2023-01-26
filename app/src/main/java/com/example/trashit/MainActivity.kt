@@ -19,6 +19,11 @@ import com.google.firebase.messaging.Constants.MessageNotificationKeys.TAG
 import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        var RToken = ""
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,20 +31,28 @@ class MainActivity : ComponentActivity() {
                 MainScreen()
 
             }
+
+
+
         }
+
+
 
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {
-                System.out.println("Fetching FCM registration token failed")
+                println("Fetching FCM registration token failed")
                 return@OnCompleteListener
             }
 
             // Get new FCM registration token
             val token = task.result
+            RToken = token
 
             // Log and toast
-            System.out.println(token)
-            Toast.makeText(baseContext, "Device Registration Token: " + token, Toast.LENGTH_SHORT).show()
+            println(token)
+            Toast.makeText(baseContext, "Device Registration Token: $token", Toast.LENGTH_SHORT).show()
+
+
         })
 
     }
